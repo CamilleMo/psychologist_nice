@@ -4,11 +4,11 @@ Site vitrine du cabinet de psychologie.
 
 ## Site en ligne
 
-https://camillemo.github.io/psychologist_nice/
+https://marine-dujardin-psychologue.fr
 
 Publié via GitHub Pages depuis la branche `main` (racine du dépôt). Chaque push sur `main` redéploie le site automatiquement.
 
-Un nom de domaine personnalisé sera branché plus tard.
+Le domaine personnalisé est configuré via le fichier `CNAME` à la racine du dépôt — ne pas le supprimer, sinon le domaine se débranche.
 
 ## Fichiers
 
@@ -18,6 +18,7 @@ Un nom de domaine personnalisé sera branché plus tard.
 | `support.js` | Runtime chargé par la page |
 | `image-slot.js` | Composant `<image-slot>` (pas encore utilisé) |
 | `.nojekyll` | Désactive le traitement Jekyll sur GitHub Pages |
+| `CNAME` | Nom de domaine personnalisé (`marine-dujardin-psychologue.fr`) |
 
 ## Aperçu local
 
