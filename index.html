@@ -41,7 +41,6 @@
     .page-title { font-size:34px !important; }
     .quote-banner { padding:40px 24px !important; }
     .quote-text { font-size:24px !important; }
-    .hero-card { left:0 !important; bottom:-14px !important; padding:12px 16px !important; }
     .grid-2 { grid-template-columns:1fr !important; }
     .form-card { padding:26px 22px !important; }
     .form-card input, .form-card textarea { font-size:16px !important; }
@@ -80,7 +79,7 @@
 
         <section class="hero-grid" style="display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center; padding:56px 0 40px">
           <div>
-            <div class="hero-pills" style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
+            <div class="hero-pills" style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
               <div style="display:inline-flex; align-items:center; gap:8px; background:var(--accent-soft); color:var(--accent-deep); border-radius:999px; padding:8px 18px; font-size:13.5px; font-weight:600">
                 <span style="width:8px; height:8px; border-radius:50%; background:var(--accent); display:inline-block"></span>
                 Cabinet de psychologie à Nice
@@ -100,11 +99,7 @@
           </div>
           <div class="hero-media" style="position:relative">
             <div style="width:100%; aspect-ratio:4/5; position:relative">
-              <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="portrait-hero" mask="inset(0 round 200px 200px 28px 28px)" placeholder="Portrait de la psychologue" style="position:absolute; inset:0" hint-size="100%,100%"></x-import>
-            </div>
-            <div class="hero-card" style="position:absolute; bottom:-18px; left:-26px; background:rgba(255,255,255,0.92); border:1px solid #EDE9DE; border-radius:22px; padding:14px 20px; box-shadow:0 12px 32px rgba(44,74,59,0.10); pointer-events:none">
-              <div style="font-family:'Cormorant Garamond', serif; font-size:19px; font-weight:600; color:var(--accent-deep)">Sur rendez-vous</div>
-              <div style="font-size:13px; color:#7A8B80">Cabinet &amp; téléconsultation</div>
+              <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="portrait-hero" src="./portrait.jpg" mask="inset(0 round 200px 200px 28px 28px)" placeholder="Portrait de la psychologue" style="position:absolute; inset:0" hint-size="100%,100%"></x-import>
             </div>
           </div>
         </section>
