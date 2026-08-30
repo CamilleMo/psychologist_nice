@@ -31,13 +31,15 @@
   @media (max-width: 760px) {
     .grid-3 { grid-template-columns:1fr !important; }
     .hero-title { font-size:46px !important; }
+    /* below this width the 5 nav items wrap onto several rows */
+    .nav-pill { border-radius:24px !important; justify-content:center !important; }
     .approche-tabs { grid-template-columns:1fr !important; }
     .approche-panel { padding:30px 26px !important; }
   }
   @media (max-width: 560px) {
     .page-container { padding:0 20px !important; }
     .site-header { justify-content:center !important; }
-    .nav-pill { flex-wrap:wrap; justify-content:center; border-radius:24px !important; }
+    .nav-pill { margin-left:auto !important; margin-right:auto !important; }
     .nav-btn { padding:8px 14px !important; font-size:13.5px !important; }
     .hero-title { font-size:38px !important; }
     .page-title { font-size:34px !important; }
@@ -69,7 +71,7 @@
           <div style="font-size:12.5px; letter-spacing:0.6px; color:#7A8B80">Psychologue Clinicienne / Psychothérapeute - Nice</div>
         </div>
       </div>
-      <nav class="nav-pill" style="display:flex; gap:8px; background:rgba(255,255,255,0.75); border:1px solid #EDE9DE; border-radius:999px; padding:6px; backdrop-filter:blur(6px)">
+      <nav class="nav-pill" style="display:flex; flex-wrap:wrap; justify-content:flex-end; gap:8px; margin-left:auto; background:rgba(255,255,255,0.75); border:1px solid #EDE9DE; border-radius:999px; padding:6px; backdrop-filter:blur(6px)">
         <sc-for list="{{ navItems }}" as="nav" hint-placeholder-count="5">
           <button class="nav-btn" onClick="{{ nav.onClick }}" style="{{ nav.style }}" style-hover="color:#2C4A3B">{{ nav.label }}</button>
         </sc-for>
