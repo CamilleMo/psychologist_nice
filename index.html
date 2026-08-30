@@ -18,6 +18,7 @@
   a { color:var(--accent); text-decoration:none; }
   a:hover { color:var(--accent-deep); }
   ::selection { background:var(--pink); }
+  main[id] { scroll-margin-top: 16px; }
 
   /* ——— responsive adjustments (desktop design unchanged) ——— */
   @media (max-width: 900px) {
@@ -75,8 +76,7 @@
     </header>
 
     <!-- ACCUEIL -->
-    <sc-if value="{{ isAccueil }}" hint-placeholder-val="{{ true }}">
-      <main data-screen-label="Accueil">
+    <main id="accueil" data-screen-label="Accueil">
 
         <section class="hero-grid" style="display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center; padding:56px 0 40px">
           <div>
@@ -125,12 +125,10 @@
           <p style="font-size:14px; letter-spacing:0.5px; color:#5C6E63; margin:0">PREMIER ÉCHANGE TÉLÉPHONIQUE GRATUIT — 15 MINUTES</p>
         </section>
 
-      </main>
-    </sc-if>
+    </main>
 
     <!-- À PROPOS -->
-    <sc-if value="{{ isAPropos }}" hint-placeholder-val="{{ false }}">
-      <main data-screen-label="À propos" style="padding:48px 0 64px">
+    <main id="apropos" data-screen-label="À propos" style="padding:48px 0 64px">
         <section class="apropos-grid" style="display:grid; grid-template-columns:0.7fr 1.3fr; gap:56px; align-items:start">
           <div class="apropos-side">
             <div style="width:100%; aspect-ratio:1; position:relative">
@@ -169,12 +167,10 @@
             </div>
           </div>
         </section>
-      </main>
-    </sc-if>
+    </main>
 
     <!-- CONSULTATIONS -->
-    <sc-if value="{{ isConsult }}" hint-placeholder-val="{{ false }}">
-      <main data-screen-label="Consultations" style="padding:48px 0 64px">
+    <main id="consult" data-screen-label="Consultations" style="padding:48px 0 64px">
         <h1 class="page-title" style="font-family:'Cormorant Garamond', serif; font-weight:500; font-size:44px; color:var(--accent-deep); margin:0 0 14px">Consultations</h1>
         <p style="font-size:16.5px; line-height:1.7; color:#5C6E63; max-width:62ch; margin:0 0 40px; text-wrap:pretty">Les séances durent 50 minutes et se déroulent au cabinet ou en visioconférence. Le rythme — hebdomadaire, bimensuel — est défini ensemble selon vos besoins.</p>
 
@@ -231,12 +227,10 @@
             <p style="font-size:13.5px; line-height:1.6; color:#7A8B80; margin:0; max-width:70ch">Les consultations ne sont pas remboursées par l'Assurance Maladie, mais de nombreuses mutuelles prennent en charge tout ou partie des séances. Toute séance non annulée 48 h à l'avance est due.</p>
           </section>
         </sc-if>
-      </main>
-    </sc-if>
+    </main>
 
     <!-- CONTACT -->
-    <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
-      <main data-screen-label="Contact" style="padding:48px 0 64px">
+    <main id="contact" data-screen-label="Contact" style="padding:48px 0 64px">
         <h1 class="page-title" style="font-family:'Cormorant Garamond', serif; font-weight:500; font-size:44px; color:var(--accent-deep); margin:0 0 14px">Contact &amp; rendez-vous</h1>
         <p style="font-size:16.5px; line-height:1.7; color:#5C6E63; max-width:62ch; margin:0 0 40px; text-wrap:pretty">Le plus simple est de m'appeler ou de m'écrire : je vous réponds sous 48 h ouvrées. Le premier échange téléphonique est gratuit et sans engagement.</p>
 
@@ -275,8 +269,7 @@
             </div>
           </div>
         </section>
-      </main>
-    </sc-if>
+    </main>
 
     <!-- footer -->
     <footer class="footer-bar" style="border-top:1px solid #EDE9DE; padding:28px 0 36px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap">
@@ -308,13 +301,39 @@ class Component extends DCLogic {
     r.setProperty('--accent-soft', p.soft);
   }
 
-  componentDidMount() { this.applyPalette(); }
+  sections = ['accueil', 'apropos', 'consult', 'contact'];
+
+  componentDidMount() {
+    this.applyPalette();
+    this.onScroll = () => {
+      if (this.scrollRaf) return;
+      this.scrollRaf = requestAnimationFrame(() => {
+        this.scrollRaf = null;
+        const line = window.innerHeight * 0.35;
+        let current = this.sections[0];
+        for (const id of this.sections) {
+          const el = document.getElementById(id);
+          if (el && el.getBoundingClientRect().top <= line) current = id;
+        }
+        if (current !== this.state.tab) this.setState({ tab: current });
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+  }
   componentDidUpdate() { this.applyPalette(); }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    if (this.scrollRaf) cancelAnimationFrame(this.scrollRaf);
+  }
 
   setTab(tab) {
     this.setState({ tab });
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
+    if (tab === this.sections[0]) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    const el = document.getElementById(tab);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   renderVals() {
@@ -340,10 +359,6 @@ class Component extends DCLogic {
         style: tab === id ? active : base,
         onClick: () => this.setTab(id)
       })),
-      isAccueil: tab === 'accueil',
-      isAPropos: tab === 'apropos',
-      isConsult: tab === 'consult',
-      isContact: tab === 'contact',
       goAccueil: () => this.setTab('accueil'),
       goAPropos: () => this.setTab('apropos'),
       goContact: () => this.setTab('contact'),
