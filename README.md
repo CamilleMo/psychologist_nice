@@ -31,4 +31,4 @@ Puis ouvrir http://localhost:8000
 ## À compléter
 
 - Numéro de téléphone (actuellement un placeholder)
-- Numéro ADELI
+- Numéro RPPS
