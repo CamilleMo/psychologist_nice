@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://marine-dujardin-psychologue.fr/sitemap.xml

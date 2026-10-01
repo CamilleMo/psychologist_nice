@@ -29,23 +29,24 @@ Le contenu est bon (riche, précis, bien localisé). Les points faibles sont tec
 
 ## Phase 1 — Quick wins techniques (≈ 1 h, design inchangé)
 
-- [ ] Ajouter `<html lang="fr">`
-- [ ] Ajouter `<title>` dans le `<head>` statique (pas dans `<helmet>`)
+- [x] Ajouter `<html lang="fr">`
+- [x] Ajouter `<title>` dans le `<head>` statique (pas dans `<helmet>`)
   - Proposition : *Marine Dujardin — Psychologue clinicienne à Nice (Garibaldi)*
-- [ ] Ajouter `<meta name="description">`
+- [x] Ajouter `<meta name="description">`
   - Proposition : *Psychologue clinicienne et psychothérapeute à Nice, près de la place Garibaldi. Anxiété, trauma, deuil, périnatalité. Séances au cabinet ou en visio.*
-- [ ] Ajouter `<link rel="canonical" href="https://marine-dujardin-psychologue.fr/">`
-- [ ] Ajouter un favicon
-- [ ] Ajouter les balises Open Graph / Twitter (titre, description, photo)
-- [ ] Créer `robots.txt`
-- [ ] Créer `sitemap.xml`
-- [ ] Ajouter un bloc JSON-LD Schema.org `Psychologist` / `MedicalBusiness` (nom, adresse, téléphone, horaires, géolocalisation, tarif, `areaServed: Nice`, `sameAs`)
-- [ ] Corriger la hiérarchie des titres
-  - [ ] Un seul `<h1>` contenant « Psychologue à Nice » (le slogan peut rester visuellement)
-  - [ ] Les autres `<h1>` deviennent des `<h2>`
-  - [ ] Les `<main>` deviennent des `<section>` (un seul `<main>` englobant)
-- [ ] Garder les 4 panneaux « Mon approche » dans le HTML (masqués en CSS plutôt que retirés du DOM)
-- [ ] Transformer la navigation en `<a href="#apropos">…</a>`
+- [x] Ajouter `<link rel="canonical" href="https://marine-dujardin-psychologue.fr/">`
+- [x] Ajouter un favicon (`favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`, pastille « MD »)
+- [x] Ajouter les balises Open Graph / Twitter (titre, description, photo)
+- [x] Créer `robots.txt`
+- [x] Créer `sitemap.xml`
+- [x] Ajouter un bloc JSON-LD Schema.org `Psychologist` / `MedicalBusiness` (nom, adresse, téléphone, horaires, géolocalisation, tarif, `areaServed: Nice`, `sameAs`)
+- [x] Corriger la hiérarchie des titres
+  - [x] Un seul `<h1>` contenant « Psychologue à Nice » (le slogan peut rester visuellement)
+    - Fait via un sur-titre visible « Psychologue clinicienne à Nice » au-dessus du slogan
+  - [x] Les autres `<h1>` deviennent des `<h2>`
+  - [x] Les `<main>` deviennent des `<section>` (un seul `<main>` englobant)
+- [x] Garder les 4 panneaux « Mon approche » dans le HTML (masqués en CSS plutôt que retirés du DOM)
+- [x] Transformer la navigation en `<a href="#apropos">…</a>`
 
 ## Phase 2 — Performance (≈ ½ journée)
 
@@ -106,7 +107,9 @@ Le contenu est bon (riche, précis, bien localisé). Les points faibles sont tec
 - [ ] Garder le format actuel (`support.js`) ou passer en HTML pur ?
 - [ ] Une fiche Google Business Profile et un profil Doctolib existent-ils déjà ?
 - [ ] Marine est-elle prête à rédiger (ou relire) du contenu pour les pages par motif et la FAQ ?
-- [ ] Les horaires affichés (samedi 9h–18h) sont-ils exacts ? Ils seront repris dans Schema.org et la fiche Google.
+- [x] Les horaires affichés (samedi 9h–18h) sont-ils exacts ? Oui, confirmés (lundi–samedi 9h–18h). À reprendre tels quels dans la fiche Google.
+- [x] Code postal : 06300 (corrigé partout sur le site). Utiliser 06300 sur toutes les fiches (cohérence NAP).
+- [ ] Autres profils à ajouter dans `sameAs` (Psychologue.net, annuaire RPPS…) ? Seul Doctolib y figure pour l'instant.
 
 ## Ordre recommandé
 
