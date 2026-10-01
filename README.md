@@ -19,6 +19,7 @@ Le domaine personnalisé est configuré via le fichier `CNAME` à la racine du d
 | `image-slot.js` | Composant `<image-slot>` (pas encore utilisé) |
 | `.nojekyll` | Désactive le traitement Jekyll sur GitHub Pages |
 | `CNAME` | Nom de domaine personnalisé (`marine-dujardin-psychologue.fr`) |
+| `googleb2bfea7dfd6847b8.html` | Vérification Google Search Console — ne pas supprimer ni modifier |
 
 ## Aperçu local
 
