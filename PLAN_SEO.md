@@ -35,7 +35,7 @@ Conseils reçus par e-mail, repris dans les phases ci-dessous (repérés par « 
 | --- | --- | --- |
 | Publier une version HTML statique sans `support.js` : la page était téléchargée deux fois, le script bloquait le `<head>`, chargeait React depuis unpkg et redessinait toute la page. Les robots qui n'exécutent pas le JavaScript (Bing en partie, GPTBot, ClaudeBot, PerplexityBot) voyaient un menu cassé | Phase 2 | Fait (PR #6) |
 | Ajouter un fichier `llms.txt` pour décrire le site aux IA | Phase 2 bis | À faire |
-| Mentions légales et politique de confidentialité, obligatoires pour un site professionnel (loi LCEN) | Phase 3 | À faire |
+| Mentions légales et politique de confidentialité, obligatoires pour un site professionnel (loi LCEN) | Phase 3 | Fait (`/mentions-legales/`, `/confidentialite/`) |
 | Déclarer le site dans Google Search Console et soumettre le sitemap | Phase 4 | En cours |
 | Créer ou relier une fiche Google Business Profile, essentielle pour « psychologue Nice » | Phase 4 | À faire |
 
@@ -97,9 +97,10 @@ Conseils reçus par e-mail, repris dans les phases ci-dessous (repérés par « 
   - [ ] Psychologue, psychiatre, psychothérapeute : quelle différence ?
   - [ ] Combien de séances faut-il prévoir ?
   - [ ] Recevez-vous les adolescents ?
-- [ ] Page « Mentions légales » — obligatoire (loi LCEN) : identité, n° RPPS, adresse, contact, hébergeur (GitHub Pages) (Aurelien)
-- [ ] Page « Politique de confidentialité » — obligatoire : données collectées (aucun formulaire ; prise de rendez-vous via Doctolib), carte Google Maps et polices Google intégrées, droits RGPD (Aurelien)
-- [ ] Lien vers ces deux pages dans le pied de page
+- [x] Page « Mentions légales » — obligatoire (loi LCEN) : identité, n° RPPS, adresse, contact, hébergeur (GitHub Pages) (Aurelien)
+- [x] Page « Politique de confidentialité » — obligatoire : données collectées (aucun formulaire ; prise de rendez-vous via Doctolib), carte Google Maps et polices Google intégrées, droits RGPD (Aurelien)
+- [x] Lien vers ces deux pages dans le pied de page
+- [ ] Après héberger les polices et charger la carte au clic : retirer Google Fonts et Google Maps de la politique de confidentialité
 - [ ] Mettre à jour `sitemap.xml` avec les nouvelles pages
 - [ ] (Plus tard) Quelques articles de fond, par exemple « Qu'est-ce que la thérapie des schémas ? »
 
