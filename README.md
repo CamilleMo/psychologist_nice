@@ -19,6 +19,7 @@ Le domaine personnalisé est configuré via le fichier `CNAME` à la racine du d
 | `pages.css` | Styles partagés des pages légales |
 | `*.webp` | Photos optimisées en deux tailles (`-480`/`-960`, `-400`/`-800`) ; les `.jpg` d'origine servent d'image de partage (Open Graph) et de source pour régénérer les WebP |
 | `image-slot.js` | Composant `<image-slot>` (pas encore utilisé) |
+| `llms.txt` | Présentation du cabinet pour les IA (ChatGPT, Claude, Perplexity…) — à mettre à jour si le tarif, les horaires ou le contenu changent |
 | `.nojekyll` | Désactive le traitement Jekyll sur GitHub Pages |
 | `CNAME` | Nom de domaine personnalisé (`marine-dujardin-psychologue.fr`) |
 | `googleb2bfea7dfd6847b8.html` | Vérification Google Search Console — ne pas supprimer ni modifier |
