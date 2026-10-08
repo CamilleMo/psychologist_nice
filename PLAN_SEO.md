@@ -37,7 +37,7 @@ Conseils reçus par e-mail, repris dans les phases ci-dessous (repérés par « 
 | Ajouter un fichier `llms.txt` pour décrire le site aux IA | Phase 2 bis | Fait |
 | Mentions légales et politique de confidentialité, obligatoires pour un site professionnel (loi LCEN) | Phase 3 | Fait (`/mentions-legales/`, `/confidentialite/`) |
 | Déclarer le site dans Google Search Console et soumettre le sitemap | Phase 4 | Fait (le site est bien installé dans Search Console) |
-| Créer ou relier une fiche Google Business Profile, essentielle pour « psychologue Nice » | Phase 4 | La fiche existe ; reste à l'optimiser |
+| Créer ou relier une fiche Google Business Profile, essentielle pour « psychologue Nice » | Phase 4 | Fait (fiche vérifiée en ligne) ; horaires à harmoniser avec le site |
 
 ---
 
@@ -108,12 +108,16 @@ Conseils reçus par e-mail, repris dans les phases ci-dessous (repérés par « 
 
 ## Phase 4 — Hors site (SEO local : souvent le plus gros levier)
 
-- [ ] **Fiche Google Business Profile** (priorité n°1 pour apparaître dans le bloc carte) (Aurelien)
+- [x] **Fiche Google Business Profile** (priorité n°1 pour apparaître dans le bloc carte) (Aurelien) — vérifiée en ligne le 2026-10-08 : « Marine Dujardin - Psychologue », 24 rue Cais de Pierlas, 06300 Nice
   - [x] Créer ou revendiquer la fiche (existe déjà)
-  - [ ] Bonne catégorie (« Psychologue »)
-  - [ ] Horaires, téléphone, lien vers le site
-  - [ ] Photos du cabinet
+  - [x] Bonne catégorie (« Psychologue »)
+  - [x] Lien vers le site et vers Doctolib
+  - [x] Description (mentionne la périnatalité, Garibaldi, cabinet ou à distance)
+  - [ ] **Horaires différents du site — à harmoniser** : la fiche indique lun–jeu 8h–17h, ven 8h–18h, sam 9h–17h ; le site (et les données structurées, `llms.txt`) indique lun–sam 9h–18h. Marine doit dire lesquels sont justes, puis corriger l'autre côté
+  - [ ] Téléphone : non trouvé sur la fiche publique, à vérifier / ajouter (06 98 52 18 32)
+  - [ ] Photos du cabinet (non vérifiable de l'extérieur)
   - [ ] Encourager les avis, dans le respect du code de déontologie
+  - [ ] Publier un post de temps en temps (actualité, article)
 - [ ] Cohérence NAP (nom, adresse, téléphone strictement identiques partout)
   - [ ] Doctolib
   - [ ] Psychologue.net
@@ -122,8 +126,8 @@ Conseils reçus par e-mail, repris dans les phases ci-dessous (repérés par « 
   - [ ] Association Mes Petits Pois (demander un lien vers le site)
 - [ ] Google Search Console (Aurelien)
   - [x] Vérifier le domaine
-  - [ ] Soumettre le sitemap (Aurelien)
-  - [ ] Demander l'indexation de la page d'accueil
+  - [ ] Soumettre le sitemap (Aurelien) — à confirmer dans Search Console (Sitemaps)
+  - [ ] Demander l'indexation de la page d'accueil (nouveau titre en ligne depuis la PR #7)
 - [ ] (Bonus) Bing Webmaster Tools
 
 ---
@@ -134,6 +138,7 @@ Conseils reçus par e-mail, repris dans les phases ci-dessous (repérés par « 
 - [x] Une fiche Google Business Profile et un profil Doctolib existent-ils déjà ? → Oui, les deux
 - [ ] Marine est-elle prête à rédiger (ou relire) du contenu pour les pages par motif et la FAQ ?
 - [x] Les horaires affichés (samedi 9h–18h) sont-ils exacts ? Oui, confirmés (lundi–samedi 9h–18h). À reprendre tels quels dans la fiche Google.
+- [ ] La fiche Google affiche d'autres horaires (lun–jeu 8h–17h, ven 8h–18h, sam 9h–17h) : lesquels sont les bons ?
 - [x] Code postal : 06300 (corrigé partout sur le site). Utiliser 06300 sur toutes les fiches (cohérence NAP).
 - [ ] Autres profils à ajouter dans `sameAs` (Psychologue.net, annuaire RPPS…) ? Seul Doctolib y figure pour l'instant.
 
