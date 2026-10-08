@@ -98,11 +98,6 @@
 }
 </script>
 
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap" rel="stylesheet">
@@ -114,6 +109,19 @@
   a:hover { color:var(--accent-deep); }
   ::selection { background:var(--pink); }
   section[id] { scroll-margin-top: 16px; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior:smooth; } }
+
+  .nav-btn { font-family:'Nunito Sans', sans-serif; font-size:14.5px; font-weight:700; padding:10px 17px; border-radius:999px; color:#5C6E63; white-space:nowrap; transition:all 0.2s ease; }
+  .nav-btn:hover { color:#2C4A3B; }
+  .nav-btn.active, .nav-btn.active:hover { background:var(--accent-deep); color:#F6F2E9; }
+
+  .approche-tab { border:1.5px solid #E4DFD2; background:rgba(255,255,255,0.7); cursor:pointer; font-family:'Nunito Sans', sans-serif; font-size:14.5px; font-weight:700; line-height:1.35; padding:14px 18px; border-radius:20px; color:#5C6E63; text-align:center; transition:all 0.2s ease; }
+  .approche-tab[aria-pressed="true"] { border-color:transparent; color:#2C4A3B; }
+  .approche-tab[aria-pressed="true"][data-approche="schemas"] { background:var(--accent-soft); }
+  .approche-tab[aria-pressed="true"][data-approche="act"] { background:var(--amber); }
+  .approche-tab[aria-pressed="true"][data-approche="corps"] { background:var(--blue); }
+  .approche-tab[aria-pressed="true"][data-approche="positive"] { background:var(--pink); }
+  .approche-panel[hidden] { display:none; }
 
   /* ——— responsive adjustments (desktop design unchanged) ——— */
   @media (max-width: 900px) {
@@ -147,7 +155,8 @@
     .footer-bar { justify-content:center !important; text-align:center; }
   }
 </style>
-</helmet>
+</head>
+<body>
 
 <div style="min-height:100vh; background:#FBFAF5; position:relative; overflow:hidden; overflow:clip">
 
@@ -160,7 +169,7 @@
 
     <!-- header -->
     <header class="site-header" style="display:flex; align-items:center; justify-content:space-between; gap:24px; padding:28px 0 20px; flex-wrap:wrap">
-      <a href="#accueil" style="display:flex; align-items:center; gap:14px; cursor:pointer" onClick="{{ goAccueil }}">
+      <a href="#accueil" style="display:flex; align-items:center; gap:14px; cursor:pointer">
         <div style="width:46px; height:46px; border-radius:50%; background:var(--accent-deep); color:#F6F2E9; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond', serif; font-size:20px; font-weight:600; letter-spacing:1px">MD</div>
         <div>
           <div style="font-family:'Cormorant Garamond', serif; font-size:22px; font-weight:600; color:var(--accent-deep); line-height:1.1">Marine Dujardin</div>
@@ -168,9 +177,11 @@
         </div>
       </a>
       <nav class="nav-pill" style="display:flex; flex-wrap:wrap; justify-content:flex-end; gap:8px; margin-left:auto; background:rgba(255,255,255,0.75); border:1px solid #EDE9DE; border-radius:999px; padding:6px; backdrop-filter:blur(6px)">
-        <sc-for list="{{ navItems }}" as="nav" hint-placeholder-count="5">
-          <a class="nav-btn" href="#{{ nav.id }}" onClick="{{ nav.onClick }}" style="{{ nav.style }}" style-hover="color:#2C4A3B">{{ nav.label }}</a>
-        </sc-for>
+        <a class="nav-btn active" href="#accueil">Accueil</a>
+        <a class="nav-btn" href="#apropos">Qui suis-je ?</a>
+        <a class="nav-btn" href="#consult">Accompagnements</a>
+        <a class="nav-btn" href="#approche">Mon approche</a>
+        <a class="nav-btn" href="#contact">Prendre rendez-vous</a>
       </nav>
     </header>
 
@@ -197,7 +208,7 @@
           </div>
           <div class="hero-media" style="position:relative">
             <div style="width:100%; aspect-ratio:4/5; position:relative">
-              <img src="./portrait.jpg" alt="Marine Dujardin, psychologue clinicienne à Nice" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; clip-path:inset(0 round 200px 200px 28px 28px)">
+              <img src="./portrait-960.webp" srcset="./portrait-480.webp 480w, ./portrait-960.webp 960w" sizes="(max-width: 900px) min(420px, 100vw), 420px" width="960" height="1280" fetchpriority="high" alt="Marine Dujardin, psychologue clinicienne à Nice" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; clip-path:inset(0 round 200px 200px 28px 28px)">
             </div>
           </div>
         </section>
@@ -213,7 +224,7 @@
         <section class="apropos-grid" style="display:grid; grid-template-columns:0.7fr 1.3fr; gap:56px; align-items:start">
           <div class="apropos-side">
             <div style="width:100%; aspect-ratio:1; position:relative">
-              <img src="./portrait.jpg" alt="Marine Dujardin, psychologue clinicienne à Nice" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 30%; border-radius:50%">
+              <img src="./portrait-480.webp" srcset="./portrait-480.webp 480w, ./portrait-960.webp 960w" sizes="(max-width: 900px) min(420px, 100vw), 300px" width="480" height="640" loading="lazy" alt="Marine Dujardin, psychologue clinicienne à Nice" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 30%; border-radius:50%">
             </div>
             <div style="margin-top:24px; background:rgba(255,255,255,0.85); border:1px solid #EDE9DE; border-radius:24px; padding:22px">
               <div style="font-size:13px; letter-spacing:0.6px; color:#7A8B80; margin-bottom:10px">PARCOURS</div>
@@ -294,7 +305,6 @@
           </div>
         </section>
 
-        <sc-if value="{{ showPrices }}" hint-placeholder-val="{{ true }}">
           <section>
             <h3 style="font-family:'Cormorant Garamond', serif; font-size:30px; font-weight:600; color:var(--accent-deep); margin:0 0 18px">Tarifs</h3>
             <div class="tarif-card" style="display:grid; grid-template-columns:auto 1fr; align-items:center; gap:40px; background:linear-gradient(120deg, var(--accent-soft), var(--blue)); border-radius:32px; padding:38px 44px">
@@ -312,7 +322,6 @@
               </div>
             </div>
           </section>
-        </sc-if>
     </section>
 
     <!-- MON APPROCHE -->
@@ -328,12 +337,13 @@
 
         <!-- sous-onglets : les quatre approches -->
         <nav class="approche-tabs" style="display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; margin-bottom:28px">
-          <sc-for list="{{ approcheItems }}" as="ap" hint-placeholder-count="4">
-            <button type="button" aria-pressed="{{ ap.pressed }}" onClick="{{ ap.onClick }}" style="{{ ap.style }}">{{ ap.label }}</button>
-          </sc-for>
+          <button type="button" class="approche-tab" data-approche="schemas" aria-controls="approche-schemas" aria-pressed="true">Thérapie des schémas</button>
+          <button type="button" class="approche-tab" data-approche="act" aria-controls="approche-act" aria-pressed="false">ACT</button>
+          <button type="button" class="approche-tab" data-approche="corps" aria-controls="approche-corps" aria-pressed="false">Approches psychocorporelles</button>
+          <button type="button" class="approche-tab" data-approche="positive" aria-controls="approche-positive" aria-pressed="false">Psychologie positive</button>
         </nav>
 
-        <section class="approche-panel" hidden="{{ hideSchemas }}" style="background:linear-gradient(150deg, var(--accent-soft), rgba(255,255,255,0.92)); border:1px solid #EDE9DE; border-radius:32px; padding:38px 40px">
+        <section class="approche-panel" id="approche-schemas" style="background:linear-gradient(150deg, var(--accent-soft), rgba(255,255,255,0.92)); border:1px solid #EDE9DE; border-radius:32px; padding:38px 40px">
           <h3 style="font-family:'Cormorant Garamond', serif; font-size:30px; font-weight:600; color:var(--accent-deep); margin:0 0 6px">Thérapie des schémas</h3>
           <p style="font-family:'Cormorant Garamond', serif; font-size:21px; font-style:italic; color:var(--accent); margin:0 0 22px; text-wrap:pretty">Comprendre ce qui se répète pour faire autrement</p>
           <p style="font-size:16px; line-height:1.75; color:#5C6E63; margin:0 0 14px; max-width:68ch; text-wrap:pretty">Nos façons de ressentir, de penser et d'entrer en relation se construisent au fil de notre histoire, souvent très tôt. Lorsque certains besoins fondamentaux, sécurité, attachement, reconnaissance, autonomie, n'ont pas été suffisamment satisfaits, des schémas se mettent en place pour nous protéger.</p>
@@ -345,7 +355,7 @@
           </div>
         </section>
 
-        <section class="approche-panel" hidden="{{ hideAct }}" style="background:linear-gradient(150deg, var(--amber), rgba(255,255,255,0.92)); border:1px solid #EDE9DE; border-radius:32px; padding:38px 40px">
+        <section class="approche-panel" id="approche-act" hidden style="background:linear-gradient(150deg, var(--amber), rgba(255,255,255,0.92)); border:1px solid #EDE9DE; border-radius:32px; padding:38px 40px">
           <h3 style="font-family:'Cormorant Garamond', serif; font-size:30px; font-weight:600; color:var(--accent-deep); margin:0 0 6px">ACT</h3>
           <p style="font-family:'Cormorant Garamond', serif; font-size:21px; font-style:italic; color:var(--accent); margin:0 0 22px; text-wrap:pretty">Faire de la place à ce que l'on ressent pour avancer vers ce qui compte</p>
           <p style="font-size:16px; line-height:1.75; color:#5C6E63; margin:0 0 14px; max-width:68ch; text-wrap:pretty">La thérapie d'acceptation et d'engagement part d'un constat simple : plus on lutte contre certaines pensées ou émotions, plus elles occupent de place. Plutôt que de chercher à les faire disparaître, l'ACT propose d'apprendre à les accueillir autrement.</p>
@@ -357,7 +367,7 @@
           </div>
         </section>
 
-        <section class="approche-panel" hidden="{{ hideCorps }}" style="background:linear-gradient(150deg, var(--blue), rgba(255,255,255,0.92)); border:1px solid #EDE9DE; border-radius:32px; padding:38px 40px">
+        <section class="approche-panel" id="approche-corps" hidden style="background:linear-gradient(150deg, var(--blue), rgba(255,255,255,0.92)); border:1px solid #EDE9DE; border-radius:32px; padding:38px 40px">
           <h3 style="font-family:'Cormorant Garamond', serif; font-size:30px; font-weight:600; color:var(--accent-deep); margin:0 0 6px">Approches psychocorporelles</h3>
           <p style="font-family:'Cormorant Garamond', serif; font-size:21px; font-style:italic; color:var(--accent); margin:0 0 22px; text-wrap:pretty">Prendre en compte le corps dans le travail thérapeutique</p>
           <p style="font-size:16px; line-height:1.75; color:#5C6E63; margin:0 0 14px; max-width:68ch; text-wrap:pretty">Le stress, l'anxiété ou les expériences difficiles ne se logent pas seulement dans les pensées : ils s'inscrivent aussi dans le corps, tensions, souffle court, sensation d'alerte permanente, fatigue qui ne passe pas.</p>
@@ -369,7 +379,7 @@
           </div>
         </section>
 
-        <section class="approche-panel" hidden="{{ hidePositive }}" style="background:linear-gradient(150deg, var(--pink), rgba(255,255,255,0.92)); border:1px solid #EDE9DE; border-radius:32px; padding:38px 40px">
+        <section class="approche-panel" id="approche-positive" hidden style="background:linear-gradient(150deg, var(--pink), rgba(255,255,255,0.92)); border:1px solid #EDE9DE; border-radius:32px; padding:38px 40px">
           <h3 style="font-family:'Cormorant Garamond', serif; font-size:30px; font-weight:600; color:var(--accent-deep); margin:0 0 6px">Psychologie positive</h3>
           <p style="font-family:'Cormorant Garamond', serif; font-size:21px; font-style:italic; color:var(--accent); margin:0 0 22px; text-wrap:pretty">S'appuyer sur ses ressources autant que sur ses difficultés</p>
           <p style="font-size:16px; line-height:1.75; color:#5C6E63; margin:0 0 14px; max-width:68ch; text-wrap:pretty">La psychologie positive ne consiste pas à « penser positif » ni à minimiser ce qui fait souffrir. Elle s'intéresse à ce qui permet de tenir, de se reconstruire et de retrouver du sens : les forces personnelles, les liens, les moments qui font du bien.</p>
@@ -412,8 +422,8 @@
         </section>
 
         <section style="margin:24px auto 0; max-width:680px; display:grid; grid-template-columns:1fr 1fr; gap:16px">
-          <img src="./cabinet-salon.jpg" alt="Cabinet de psychologie à Nice : canapé vert, fenêtre lumineuse et bibliothèque" loading="lazy" style="display:block; width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:28px">
-          <img src="./cabinet-bureau.jpg" alt="Cabinet de psychologie à Nice : fauteuil, bureau en bois et porte d'entrée" loading="lazy" style="display:block; width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:28px">
+          <img src="./cabinet-salon-800.webp" srcset="./cabinet-salon-400.webp 400w, ./cabinet-salon-800.webp 800w" sizes="(max-width: 720px) 50vw, 330px" width="800" height="1067" alt="Cabinet de psychologie à Nice : canapé vert, fenêtre lumineuse et bibliothèque" loading="lazy" style="display:block; width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; border-radius:28px">
+          <img src="./cabinet-bureau-800.webp" srcset="./cabinet-bureau-400.webp 400w, ./cabinet-bureau-800.webp 800w" sizes="(max-width: 720px) 50vw, 330px" width="800" height="1067" alt="Cabinet de psychologie à Nice : fauteuil, bureau en bois et porte d'entrée" loading="lazy" style="display:block; width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; border-radius:28px">
         </section>
 
         <!-- bouton Doctolib (flottant en bas à droite) -->
@@ -430,125 +440,45 @@
 
   </div>
 </div>
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{
-  &quot;couleurAccent&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;Vert forêt&quot;, &quot;Bleu lagon&quot;, &quot;Vieux rose&quot;], &quot;default&quot;: &quot;Vert forêt&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Apparence&quot; },
-  &quot;afficherTarifs&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Contenu&quot; }
-}">
-class Component extends DCLogic {
-  state = { tab: 'accueil', approche: 'schemas' };
+<script>
+(function () {
+  var navLinks = document.querySelectorAll('.nav-btn');
+  var sections = Array.prototype.map.call(navLinks, function (a) { return document.getElementById(a.hash.slice(1)); });
 
-  palettes = {
-    'Vert forêt': { accent: '#3E6B54', deep: '#2C4A3B', soft: '#E4EEE8' },
-    'Bleu lagon': { accent: '#3F7086', deep: '#2B4E5E', soft: '#E1EDF2' },
-    'Vieux rose': { accent: '#A66470', deep: '#7C4550', soft: '#F5E6E8' }
-  };
-
-  applyPalette() {
-    const p = this.palettes[this.props.couleurAccent] || this.palettes['Vert forêt'];
-    const r = document.documentElement.style;
-    r.setProperty('--accent', p.accent);
-    r.setProperty('--accent-deep', p.deep);
-    r.setProperty('--accent-soft', p.soft);
+  // highlight the section being read
+  var pending = false;
+  function updateNav() {
+    pending = false;
+    var line = window.innerHeight * 0.35, current = 0;
+    sections.forEach(function (el, i) { if (el && el.getBoundingClientRect().top <= line) current = i; });
+    navLinks.forEach(function (a, i) { a.classList.toggle('active', i === current); });
   }
+  window.addEventListener('scroll', function () {
+    if (!pending) { pending = true; requestAnimationFrame(updateNav); }
+  }, { passive: true });
+  updateNav();
 
-  sections = ['accueil', 'apropos', 'consult', 'approche', 'contact'];
+  // "Accueil" and the logo go back to the very top of the page
+  document.querySelectorAll('a[href="#accueil"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      history.replaceState(null, '', location.pathname);
+      window.scrollTo({ top: 0 });
+    });
+  });
 
-  approches = [
-    ['schemas', 'Thérapie des schémas', 'var(--accent-soft)'],
-    ['act', 'ACT', 'var(--amber)'],
-    ['corps', 'Approches psychocorporelles', 'var(--blue)'],
-    ['positive', 'Psychologie positive', 'var(--pink)']
-  ];
-
-  componentDidMount() {
-    this.applyPalette();
-    this.onScroll = () => {
-      if (this.scrollRaf) return;
-      this.scrollRaf = requestAnimationFrame(() => {
-        this.scrollRaf = null;
-        const line = window.innerHeight * 0.35;
-        let current = this.sections[0];
-        for (const id of this.sections) {
-          const el = document.getElementById(id);
-          if (el && el.getBoundingClientRect().top <= line) current = id;
-        }
-        if (current !== this.state.tab) this.setState({ tab: current });
+  // "Mon approche" tabs
+  var tabs = document.querySelectorAll('.approche-tab');
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute('aria-pressed', on ? 'true' : 'false');
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
       });
-    };
-    window.addEventListener('scroll', this.onScroll, { passive: true });
-  }
-  componentDidUpdate() { this.applyPalette(); }
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.onScroll);
-    if (this.scrollRaf) cancelAnimationFrame(this.scrollRaf);
-  }
-
-  setTab(tab, e) {
-    if (e) e.preventDefault();
-    this.setState({ tab });
-    if (tab === this.sections[0]) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-    const el = document.getElementById(tab);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  renderVals() {
-    const tab = this.state.tab;
-    const base = {
-      border: 'none', background: 'transparent', cursor: 'pointer',
-      fontFamily: "'Nunito Sans', sans-serif", fontSize: '14.5px', fontWeight: 700,
-      padding: '10px 17px', borderRadius: '999px', color: '#5C6E63',
-      whiteSpace: 'nowrap', transition: 'all 0.2s ease'
-    };
-    const active = {
-      ...base, background: 'var(--accent-deep)', color: '#F6F2E9'
-    };
-    const tabs = [
-      ['accueil', 'Accueil'],
-      ['apropos', 'Qui suis-je ?'],
-      ['consult', 'Accompagnements'],
-      ['approche', 'Mon approche'],
-      ['contact', 'Prendre rendez-vous']
-    ];
-
-    const ap = this.state.approche;
-    const apBase = {
-      border: '1.5px solid #E4DFD2', background: 'rgba(255,255,255,0.7)',
-      cursor: 'pointer', fontFamily: "'Nunito Sans', sans-serif",
-      fontSize: '14.5px', fontWeight: 700, lineHeight: 1.35,
-      padding: '14px 18px', borderRadius: '20px', color: '#5C6E63',
-      textAlign: 'center', transition: 'all 0.2s ease'
-    };
-
-    return {
-      navItems: tabs.map(([id, label]) => ({
-        label,
-        style: tab === id ? active : base,
-        id,
-        onClick: (e) => this.setTab(id, e)
-      })),
-      approcheItems: this.approches.map(([id, label, tint]) => ({
-        label,
-        style: ap === id
-          ? { ...apBase, background: tint, borderColor: 'transparent', color: '#2C4A3B' }
-          : apBase,
-        pressed: ap === id ? 'true' : 'false',
-        onClick: () => this.setState({ approche: id })
-      })),
-      hideSchemas: ap !== 'schemas',
-      hideAct: ap !== 'act',
-      hideCorps: ap !== 'corps',
-      hidePositive: ap !== 'positive',
-      goAccueil: (e) => this.setTab('accueil', e),
-      goApproche: () => this.setTab('approche'),
-      goContact: () => this.setTab('contact'),
-      showPrices: this.props.afficherTarifs ?? true
-    };
-  }
-}
+    });
+  });
+})();
 </script>
 </body>
 </html>

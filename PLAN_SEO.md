@@ -50,14 +50,14 @@ Le contenu est bon (riche, précis, bien localisé). Les points faibles sont tec
 
 ## Phase 2 — Performance (≈ ½ journée)
 
-- [ ] **Décision** : garder le runtime `support.js` ou passer en HTML/CSS/JS pur ?
+- [x] **Décision** : garder le runtime `support.js` ou passer en HTML/CSS/JS pur ? → HTML/CSS/JS pur
   - Pour : gros gain de vitesse (plus de React ni de Babel au chargement)
   - Contre : perte de l'édition via l'outil d'origine (sélecteur de couleur, option tarifs)
-- [ ] Si oui : réécrire l'interactivité (surlignage de la navigation au scroll + onglets) en JS natif
-- [ ] Convertir le portrait en WebP/AVIF, en deux tailles (`srcset`)
-- [ ] Ajouter `width` / `height` et `fetchpriority="high"` sur le portrait principal
-- [ ] Auto-héberger les polices (ou garder Google Fonts avec `display=swap`)
-- [ ] (Optionnel) Remplacer l'iframe Google Maps par une image statique cliquable
+- [x] Si oui : réécrire l'interactivité (surlignage de la navigation au scroll + onglets) en JS natif
+- [x] Convertir le portrait en WebP/AVIF, en deux tailles (`srcset`)
+- [x] Ajouter `width` / `height` et `fetchpriority="high"` sur le portrait principal
+- [x] Auto-héberger les polices (ou garder Google Fonts avec `display=swap`) → Google Fonts conservé, déjà en `display=swap`
+- [ ] (Optionnel) Remplacer l'iframe Google Maps par une image statique cliquable — non fait : l'iframe est déjà en `loading="lazy"` (chargée seulement près du bas de page), et une image statique Google demande une clé API
 - [ ] Mesurer avant/après avec PageSpeed Insights (mobile)
   - Score avant : ___ / Score après : ___
 
@@ -104,7 +104,7 @@ Le contenu est bon (riche, précis, bien localisé). Les points faibles sont tec
 
 ## Questions ouvertes
 
-- [ ] Garder le format actuel (`support.js`) ou passer en HTML pur ?
+- [x] Garder le format actuel (`support.js`) ou passer en HTML pur ? → HTML pur
 - [ ] Une fiche Google Business Profile et un profil Doctolib existent-ils déjà ?
 - [ ] Marine est-elle prête à rédiger (ou relire) du contenu pour les pages par motif et la FAQ ?
 - [x] Les horaires affichés (samedi 9h–18h) sont-ils exacts ? Oui, confirmés (lundi–samedi 9h–18h). À reprendre tels quels dans la fiche Google.
