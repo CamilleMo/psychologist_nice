@@ -27,6 +27,20 @@ Le contenu est bon (riche, précis, bien localisé). Les points faibles sont tec
 
 ---
 
+## Retour d'Aurelien (2026-10-08)
+
+Conseils reçus par e-mail, repris dans les phases ci-dessous (repérés par « (Aurelien) ») :
+
+| Conseil | Où dans le plan | État |
+| --- | --- | --- |
+| Publier une version HTML statique sans `support.js` : la page était téléchargée deux fois, le script bloquait le `<head>`, chargeait React depuis unpkg et redessinait toute la page. Les robots qui n'exécutent pas le JavaScript (Bing en partie, GPTBot, ClaudeBot, PerplexityBot) voyaient un menu cassé | Phase 2 | Fait (PR #6) |
+| Ajouter un fichier `llms.txt` pour décrire le site aux IA | Phase 2 bis | À faire |
+| Mentions légales et politique de confidentialité, obligatoires pour un site professionnel (loi LCEN) | Phase 3 | À faire |
+| Déclarer le site dans Google Search Console et soumettre le sitemap | Phase 4 | En cours |
+| Créer ou relier une fiche Google Business Profile, essentielle pour « psychologue Nice » | Phase 4 | À faire |
+
+---
+
 ## Phase 1 — Quick wins techniques (≈ 1 h, design inchangé)
 
 - [x] Ajouter `<html lang="fr">`
@@ -50,16 +64,23 @@ Le contenu est bon (riche, précis, bien localisé). Les points faibles sont tec
 
 ## Phase 2 — Performance (≈ ½ journée)
 
-- [x] **Décision** : garder le runtime `support.js` ou passer en HTML/CSS/JS pur ? → HTML/CSS/JS pur
+- [x] **Décision** : garder le runtime `support.js` ou passer en HTML/CSS/JS pur ? → HTML/CSS/JS pur (Aurelien)
+  - Règle aussi : double téléchargement de la page, script bloquant dans le `<head>`, menu cassé pour les robots sans JavaScript (Bing, robots des IA)
   - Pour : gros gain de vitesse (plus de React ni de Babel au chargement)
   - Contre : perte de l'édition via l'outil d'origine (sélecteur de couleur, option tarifs)
-- [x] Si oui : réécrire l'interactivité (surlignage de la navigation au scroll + onglets) en JS natif
+- [x] Si oui : réécrire l'interactivité (surlignage de la navigation au scroll + onglets) en JS natif (Aurelien)
 - [x] Convertir le portrait en WebP/AVIF, en deux tailles (`srcset`)
 - [x] Ajouter `width` / `height` et `fetchpriority="high"` sur le portrait principal
 - [x] Auto-héberger les polices (ou garder Google Fonts avec `display=swap`) → Google Fonts conservé, déjà en `display=swap`
 - [ ] (Optionnel) Remplacer l'iframe Google Maps par une image statique cliquable — non fait : l'iframe est déjà en `loading="lazy"` (chargée seulement près du bas de page), et une image statique Google demande une clé API
 - [ ] Mesurer avant/après avec PageSpeed Insights (mobile)
   - Score avant : ___ / Score après : ___
+
+## Phase 2 bis — Référencement par les IA (ChatGPT, Claude, Perplexity…)
+
+- [ ] Créer `/llms.txt` : présentation courte du cabinet (qui, où, pour quoi, comment prendre rendez-vous) au format Markdown, avec les liens vers les pages du site (Aurelien)
+- [ ] Le mettre à jour quand de nouvelles pages sont créées (phase 3)
+- [x] `robots.txt` n'exclut aucun robot (GPTBot, ClaudeBot, PerplexityBot compris)
 
 ## Phase 3 — Contenu et structure
 
@@ -76,13 +97,15 @@ Le contenu est bon (riche, précis, bien localisé). Les points faibles sont tec
   - [ ] Psychologue, psychiatre, psychothérapeute : quelle différence ?
   - [ ] Combien de séances faut-il prévoir ?
   - [ ] Recevez-vous les adolescents ?
-- [ ] Page « Mentions légales »
+- [ ] Page « Mentions légales » — obligatoire (loi LCEN) : identité, n° RPPS, adresse, contact, hébergeur (GitHub Pages) (Aurelien)
+- [ ] Page « Politique de confidentialité » — obligatoire : données collectées (aucun formulaire ; prise de rendez-vous via Doctolib), carte Google Maps et polices Google intégrées, droits RGPD (Aurelien)
+- [ ] Lien vers ces deux pages dans le pied de page
 - [ ] Mettre à jour `sitemap.xml` avec les nouvelles pages
 - [ ] (Plus tard) Quelques articles de fond, par exemple « Qu'est-ce que la thérapie des schémas ? »
 
 ## Phase 4 — Hors site (SEO local : souvent le plus gros levier)
 
-- [ ] **Fiche Google Business Profile** (priorité n°1 pour apparaître dans le bloc carte)
+- [ ] **Fiche Google Business Profile** (priorité n°1 pour apparaître dans le bloc carte) (Aurelien)
   - [ ] Créer ou revendiquer la fiche
   - [ ] Bonne catégorie (« Psychologue »)
   - [ ] Horaires, téléphone, lien vers le site
@@ -94,9 +117,9 @@ Le contenu est bon (riche, précis, bien localisé). Les points faibles sont tec
   - [ ] Annuaire santé RPPS
   - [ ] PagesJaunes
   - [ ] Association Mes Petits Pois (demander un lien vers le site)
-- [ ] Google Search Console
+- [ ] Google Search Console (Aurelien)
   - [ ] Vérifier le domaine
-  - [ ] Soumettre le sitemap
+  - [ ] Soumettre le sitemap (Aurelien)
   - [ ] Demander l'indexation de la page d'accueil
 - [ ] (Bonus) Bing Webmaster Tools
 
@@ -115,4 +138,5 @@ Le contenu est bon (riche, précis, bien localisé). Les points faibles sont tec
 
 1. Phase 1 + fiche Google + Search Console (peu d'effort, l'essentiel du gain)
 2. Phase 2
-3. Phase 3, selon le temps disponible
+3. Mentions légales + politique de confidentialité (obligation légale, à ne pas repousser) et `llms.txt`
+4. Reste de la phase 3, selon le temps disponible
