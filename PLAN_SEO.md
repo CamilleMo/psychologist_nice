@@ -34,10 +34,10 @@ Conseils reçus par e-mail, repris dans les phases ci-dessous (repérés par « 
 | Conseil | Où dans le plan | État |
 | --- | --- | --- |
 | Publier une version HTML statique sans `support.js` : la page était téléchargée deux fois, le script bloquait le `<head>`, chargeait React depuis unpkg et redessinait toute la page. Les robots qui n'exécutent pas le JavaScript (Bing en partie, GPTBot, ClaudeBot, PerplexityBot) voyaient un menu cassé | Phase 2 | Fait (PR #6) |
-| Ajouter un fichier `llms.txt` pour décrire le site aux IA | Phase 2 bis | À faire |
-| Mentions légales et politique de confidentialité, obligatoires pour un site professionnel (loi LCEN) | Phase 3 | À faire |
-| Déclarer le site dans Google Search Console et soumettre le sitemap | Phase 4 | En cours |
-| Créer ou relier une fiche Google Business Profile, essentielle pour « psychologue Nice » | Phase 4 | À faire |
+| Ajouter un fichier `llms.txt` pour décrire le site aux IA | Phase 2 bis | Fait |
+| Mentions légales et politique de confidentialité, obligatoires pour un site professionnel (loi LCEN) | Phase 3 | Fait (`/mentions-legales/`, `/confidentialite/`) |
+| Déclarer le site dans Google Search Console et soumettre le sitemap | Phase 4 | Fait (le site est bien installé dans Search Console) |
+| Créer ou relier une fiche Google Business Profile, essentielle pour « psychologue Nice » | Phase 4 | La fiche existe ; reste à l'optimiser |
 
 ---
 
@@ -46,6 +46,7 @@ Conseils reçus par e-mail, repris dans les phases ci-dessous (repérés par « 
 - [x] Ajouter `<html lang="fr">`
 - [x] Ajouter `<title>` dans le `<head>` statique (pas dans `<helmet>`)
   - Proposition : *Marine Dujardin — Psychologue clinicienne à Nice (Garibaldi)*
+- [x] Mettre la recherche visée en tête du titre : *Psychologue à Nice (Garibaldi) — Marine Dujardin, psychothérapeute* (2026-10-08)
 - [x] Ajouter `<meta name="description">`
   - Proposition : *Psychologue clinicienne et psychothérapeute à Nice, près de la place Garibaldi. Anxiété, trauma, deuil, périnatalité. Séances au cabinet ou en visio.*
 - [x] Ajouter `<link rel="canonical" href="https://marine-dujardin-psychologue.fr/">`
@@ -78,13 +79,14 @@ Conseils reçus par e-mail, repris dans les phases ci-dessous (repérés par « 
 
 ## Phase 2 bis — Référencement par les IA (ChatGPT, Claude, Perplexity…)
 
-- [ ] Créer `/llms.txt` : présentation courte du cabinet (qui, où, pour quoi, comment prendre rendez-vous) au format Markdown, avec les liens vers les pages du site (Aurelien)
-- [ ] Le mettre à jour quand de nouvelles pages sont créées (phase 3)
+- [x] Créer `/llms.txt` : présentation courte du cabinet (qui, où, pour quoi, comment prendre rendez-vous) au format Markdown, avec les liens vers les pages du site (Aurelien)
+- [ ] Le mettre à jour quand le contenu change (tarif, horaires, nouvelles pages…)
 - [x] `robots.txt` n'exclut aucun robot (GPTBot, ClaudeBot, PerplexityBot compris)
 
 ## Phase 3 — Contenu et structure
 
-- [ ] **Décision** : passer à plusieurs pages ? Qui rédige (brouillons par Claude, validation par Marine) ?
+- [x] **Décision** : passer à plusieurs pages ? → Non pour l'instant : Marine préfère garder une seule page
+  - Alternative à discuter : enrichir les cartes « Motifs de consultation » d'un ou deux paragraphes chacune
 - [ ] Pages dédiées par motif / spécialité (une recherche ciblée par page)
   - [ ] `/psychologue-anxiete-nice`
   - [ ] `/psychotraumatisme-nice`
@@ -97,16 +99,17 @@ Conseils reçus par e-mail, repris dans les phases ci-dessous (repérés par « 
   - [ ] Psychologue, psychiatre, psychothérapeute : quelle différence ?
   - [ ] Combien de séances faut-il prévoir ?
   - [ ] Recevez-vous les adolescents ?
-- [ ] Page « Mentions légales » — obligatoire (loi LCEN) : identité, n° RPPS, adresse, contact, hébergeur (GitHub Pages) (Aurelien)
-- [ ] Page « Politique de confidentialité » — obligatoire : données collectées (aucun formulaire ; prise de rendez-vous via Doctolib), carte Google Maps et polices Google intégrées, droits RGPD (Aurelien)
-- [ ] Lien vers ces deux pages dans le pied de page
+- [x] Page « Mentions légales » — obligatoire (loi LCEN) : identité, n° RPPS, adresse, contact, hébergeur (GitHub Pages) (Aurelien)
+- [x] Page « Politique de confidentialité » — obligatoire : données collectées (aucun formulaire ; prise de rendez-vous via Doctolib), carte Google Maps et polices Google intégrées, droits RGPD (Aurelien)
+- [x] Lien vers ces deux pages dans le pied de page
+- [ ] Après héberger les polices et charger la carte au clic : retirer Google Fonts et Google Maps de la politique de confidentialité
 - [ ] Mettre à jour `sitemap.xml` avec les nouvelles pages
 - [ ] (Plus tard) Quelques articles de fond, par exemple « Qu'est-ce que la thérapie des schémas ? »
 
 ## Phase 4 — Hors site (SEO local : souvent le plus gros levier)
 
 - [ ] **Fiche Google Business Profile** (priorité n°1 pour apparaître dans le bloc carte) (Aurelien)
-  - [ ] Créer ou revendiquer la fiche
+  - [x] Créer ou revendiquer la fiche (existe déjà)
   - [ ] Bonne catégorie (« Psychologue »)
   - [ ] Horaires, téléphone, lien vers le site
   - [ ] Photos du cabinet
@@ -118,7 +121,7 @@ Conseils reçus par e-mail, repris dans les phases ci-dessous (repérés par « 
   - [ ] PagesJaunes
   - [ ] Association Mes Petits Pois (demander un lien vers le site)
 - [ ] Google Search Console (Aurelien)
-  - [ ] Vérifier le domaine
+  - [x] Vérifier le domaine
   - [ ] Soumettre le sitemap (Aurelien)
   - [ ] Demander l'indexation de la page d'accueil
 - [ ] (Bonus) Bing Webmaster Tools
@@ -128,7 +131,7 @@ Conseils reçus par e-mail, repris dans les phases ci-dessous (repérés par « 
 ## Questions ouvertes
 
 - [x] Garder le format actuel (`support.js`) ou passer en HTML pur ? → HTML pur
-- [ ] Une fiche Google Business Profile et un profil Doctolib existent-ils déjà ?
+- [x] Une fiche Google Business Profile et un profil Doctolib existent-ils déjà ? → Oui, les deux
 - [ ] Marine est-elle prête à rédiger (ou relire) du contenu pour les pages par motif et la FAQ ?
 - [x] Les horaires affichés (samedi 9h–18h) sont-ils exacts ? Oui, confirmés (lundi–samedi 9h–18h). À reprendre tels quels dans la fiche Google.
 - [x] Code postal : 06300 (corrigé partout sur le site). Utiliser 06300 sur toutes les fiches (cohérence NAP).
